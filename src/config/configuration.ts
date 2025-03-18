@@ -1,13 +1,6 @@
 import * as dotenv from 'dotenv';
 
 export default () => {
-    const result = dotenv.config({
-        path: `.env.${process.env.NODE_ENV || 'dev'}`,
-    });
-
-    if (result.error) {
-        throw new Error("Couldn't find .env file");
-    }
     return {
         db: {
             database: process.env.DATABASE,
