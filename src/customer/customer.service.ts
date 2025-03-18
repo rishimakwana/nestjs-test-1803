@@ -71,6 +71,10 @@ export class CustomerService {
         throw new BadRequestException(globalMsg.errors.ORDER_NOT_FOUND);
       }
 
+      if (order.dataValues.status === 'return') {
+        throw new BadRequestException('Order already returned');
+      }
+
       await order.update({ status: 'return' }, { transaction: t });
       await Product.update(
         { stock: Sequelize.literal('stock + 1') },
@@ -80,7 +84,7 @@ export class CustomerService {
       await t.commit();
       return {
         statusCode: HttpStatus.OK,
-        message: globalMsg.common.UPDATED_SUCCESSFULLY,
+        message: globalMsg.common.ORDER_RETURNED_SUCCESSFULLY,
         result: order,
       };
     } catch (error) {

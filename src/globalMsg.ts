@@ -2,6 +2,7 @@ const globalMsg = {
 
   common: {
     CREATED_SUCCESSFULLY: "Created",
+    ORDER_RETURNED_SUCCESSFULLY: "Order returned successfully",
     FETCH_DATA_SUCCESSFULLY: "Fetch data ",
     UPDATED_SUCCESSFULLY: "Updated",
     DELTED_SUCESSFULLY: "Deleted",

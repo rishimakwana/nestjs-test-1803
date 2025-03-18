@@ -93,9 +93,13 @@ export async function findEntitiesWithPaginationAndSearch(Model, paginationDto, 
                 ...whereClause,
                 storeId: storeId,
             }
+            include.push({
+                model: Store,
+                attributes: ['name'],
+            })
         }
 
-        if (modules == 'AdminProductsModule') {
+        if (modules == 'AdminProductsModule' || modules == 'GetAllOrdersModule' ) {
             include.push({
                 model: Store,
                 attributes: ['name'],
